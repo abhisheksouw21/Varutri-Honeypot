@@ -156,3 +156,7 @@ Key settings in `application.properties`:
 - For managed Redis over TLS set `REDIS_SSL_ENABLED=true`.
 - Cache operation metrics are exported via actuator metric key:
 	- `varutri.consumer.cache.operations`
+
+
+---
+*Note: This is an active research project. Use responsibly.*
