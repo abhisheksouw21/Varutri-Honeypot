@@ -138,3 +138,6 @@ mvn install -U
 ## 📞 Support
 
 For buildathon support, contact the team lead or check project issues on GitHub.
+
+# Configuration Verification
+Verify that your API keys are valid before launching the service.
