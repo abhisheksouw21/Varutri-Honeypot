@@ -40,3 +40,5 @@ open index.html
 
 - This is a production-oriented integration surface for end-to-end flow testing.
 - Browser CORS/security policies still apply when opening from file protocol; if needed, host the folder via a lightweight static server.
+
+To serve locally with live reload, use static server tools like `serve` or Python's `http.server`.
