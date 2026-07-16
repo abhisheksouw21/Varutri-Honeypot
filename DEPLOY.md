@@ -118,3 +118,6 @@ This guide will help you deploy the Varutri Honeypot application using **AWS EC2
   ```bash
   docker compose logs -f
   ```
+
+# Viewing Logs
+Use `docker-compose logs -f` to monitor honeypot activity.
