@@ -27,3 +27,5 @@ If backend runs elsewhere, update Base URL in popup settings.
 - Uses `chrome.storage.local` for local config/token storage.
 - This is a starter and not hardened for production secrets.
 - For production rollout, replace token storage with secure handling, tighten host permissions, and add CSP hardening/review.
+
+Note: Ensure developer mode is toggled ON in chrome://extensions.
