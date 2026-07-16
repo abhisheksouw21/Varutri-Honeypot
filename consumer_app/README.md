@@ -31,3 +31,5 @@ Change Base URL in the UI when needed.
 
 - This is an integration shell with flow-structured screens, not a production UI.
 - iOS/Android platform-specific capture modules should be added in later iterations.
+
+Run `flutter doctor` to verify the installation of target platforms.
