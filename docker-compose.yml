@@ -1,0 +1,65 @@
+services:
+  app:
+    container_name: varutri_honeypot
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - MONGODB_DATABASE=${MONGODB_DATABASE}
+      - VARUTRI_API_KEY=${VARUTRI_API_KEY}
+      - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
+      - WHATSAPP_API_TOKEN=${WHATSAPP_API_TOKEN}
+      - WHATSAPP_PHONE_NUMBER_ID=${WHATSAPP_PHONE_NUMBER_ID}
+      - WHATSAPP_VERIFY_TOKEN=${WHATSAPP_VERIFY_TOKEN}
+      - CONSUMER_CACHE_BACKEND=${CONSUMER_CACHE_BACKEND:-REDIS}
+      - CONSUMER_CACHE_KEY_PREFIX=${CONSUMER_CACHE_KEY_PREFIX:-varutri:consumer}
+      - REDIS_HOST=${REDIS_HOST:-redis}
+      - REDIS_PORT=${REDIS_PORT:-6379}
+      - REDIS_USERNAME=${REDIS_USERNAME:-}
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+      - REDIS_DATABASE=${REDIS_DATABASE:-0}
+      - REDIS_SSL_ENABLED=${REDIS_SSL_ENABLED:-false}
+    depends_on:
+      - redis
+    restart: unless-stopped
+    # If you want to run MongoDB locally as a container, uncomment the 'depends_on' and 'mongodb' service below.
+    # However, for AWS Free Tier (EC2 t2.micro/t3.micro), we recommend using MongoDB Atlas (cloud) 
+    # to save RAM on the server.
+#     depends_on:
+#       - mongodb
+
+  redis:
+    image: redis:7-alpine
+    container_name: varutri_redis
+    command:
+      - sh
+      - -c
+      - |
+        if [ -n "$REDIS_PASSWORD" ]; then
+          exec redis-server --appendonly yes --requirepass "$REDIS_PASSWORD"
+        else
+          exec redis-server --appendonly yes
+        fi
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+#   mongodb:
+#     image: mongo:latest
+#     container_name: mongodb
+#     ports:
+#       - "27017:27017"
+#     volumes:
+#       - mongo_data:/data/db
+#     restart: unless-stopped
+
+# volumes:
+#   mongo_data:
+
+volumes:
+  redis_data:

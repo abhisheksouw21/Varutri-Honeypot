@@ -1,0 +1,500 @@
+:root {
+    --bg-paper: #f7f4ed;
+    --bg-highlight: #ffe6c8;
+    --ink: #12231d;
+    --muted: #4f6258;
+    --line: #d7d4c7;
+    --panel: rgba(255, 255, 255, 0.78);
+    --primary: #0f766e;
+    --primary-strong: #0a4f49;
+    --warning: #b45309;
+    --danger: #b42318;
+    --safe: #1f7a43;
+    --radius: 16px;
+    --shadow-soft: 0 18px 32px rgba(31, 28, 17, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+    color: var(--ink);
+    background: linear-gradient(132deg, var(--bg-paper) 0%, #fffdf7 48%, #f4f8f2 100%);
+    position: relative;
+    padding: 20px;
+}
+
+.ambient-layer,
+.grain-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.ambient-layer {
+    background:
+        radial-gradient(36rem 24rem at 94% 3%, rgba(15, 118, 110, 0.22), transparent 70%),
+        radial-gradient(30rem 20rem at 4% 92%, rgba(253, 186, 116, 0.26), transparent 72%),
+        radial-gradient(32rem 24rem at 50% 58%, rgba(34, 197, 94, 0.1), transparent 70%);
+}
+
+.grain-layer {
+    background-image: linear-gradient(transparent 95%, rgba(10, 10, 10, 0.05) 100%);
+    background-size: 100% 3px;
+    opacity: 0.22;
+}
+
+.app-shell {
+    max-width: 1420px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(9px);
+}
+
+.top-rail {
+    padding: 18px 22px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin: 0 0 4px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.45rem, 2.5vw, 2rem);
+    line-height: 1.1;
+}
+
+.subtitle {
+    margin: 8px 0 0;
+    color: var(--muted);
+    max-width: 56ch;
+    font-size: 0.95rem;
+}
+
+.status-cluster {
+    display: grid;
+    gap: 8px;
+}
+
+.status-chip {
+    border-radius: 999px;
+    padding: 9px 14px;
+    background: #deeee7;
+    color: var(--primary-strong);
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status-chip.subtle {
+    background: #f4efe2;
+    color: #614f2f;
+}
+
+.mono {
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+.dashboard-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.connection-panel {
+    grid-column: span 4;
+    padding: 16px;
+}
+
+.presence-panel {
+    grid-column: span 4;
+    padding: 16px;
+    background: linear-gradient(160deg, #f3ece0 0%, #ffffff 75%);
+}
+
+.analyze-panel {
+    grid-column: span 4;
+    padding: 16px;
+}
+
+.history-panel {
+    grid-column: span 5;
+    padding: 16px;
+    min-height: 340px;
+}
+
+.capabilities-panel {
+    grid-column: span 4;
+    padding: 16px;
+    min-height: 340px;
+}
+
+.detail-panel {
+    grid-column: span 3;
+    padding: 16px;
+    min-height: 340px;
+}
+
+.bottom-rail {
+    margin-top: 14px;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 0.76rem;
+}
+
+.section-head {
+    margin-bottom: 10px;
+}
+
+.section-head h2 {
+    margin: 0;
+    font-size: 1.02rem;
+}
+
+.section-head p {
+    margin: 3px 0 0;
+    font-size: 0.83rem;
+    color: var(--muted);
+}
+
+.form-grid {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    display: grid;
+    gap: 5px;
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+input,
+textarea,
+select {
+    font: inherit;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.86);
+    padding: 9px 10px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid rgba(15, 118, 110, 0.22);
+    border-color: var(--primary);
+}
+
+.button-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    font: inherit;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    padding: 9px 13px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn.primary {
+    color: #effffb;
+    background: linear-gradient(160deg, var(--primary), var(--primary-strong));
+}
+
+.btn.soft {
+    color: #21433c;
+    background: #e6f1ee;
+    border-color: #c3d8d2;
+}
+
+.btn:disabled {
+    opacity: 0.56;
+    cursor: wait;
+}
+
+.meta-line {
+    margin: 10px 0 0;
+    font-size: 0.74rem;
+    color: var(--muted);
+}
+
+.presence-title {
+    margin: 0;
+    font-size: 1.28rem;
+    font-weight: 700;
+}
+
+.presence-note {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.latest-analysis {
+    margin-top: 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid #ece7d9;
+    padding: 10px;
+    font-size: 0.86rem;
+}
+
+.presence-idle {
+    border-color: #d3d0c5;
+}
+
+.presence-safe {
+    border-color: #b8dfc5;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+}
+
+.presence-watch {
+    border-color: #f0cc96;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.16);
+}
+
+.presence-danger {
+    border-color: #f1a9a0;
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+    animation: dangerPulse 2.1s infinite;
+}
+
+@keyframes dangerPulse {
+    0% {
+        transform: translateZ(0);
+    }
+
+    50% {
+        transform: translateY(-1px);
+    }
+
+    100% {
+        transform: translateZ(0);
+    }
+}
+
+.analysis-block {
+    margin-top: 12px;
+    border-top: 1px solid #dfd8ca;
+    padding-top: 10px;
+}
+
+.analysis-block h3 {
+    margin: 0 0 6px;
+    font-size: 0.92rem;
+}
+
+.history-list,
+.capability-list,
+.detail-content {
+    display: grid;
+    gap: 8px;
+}
+
+.history-item,
+.capability-item,
+.detail-card {
+    border: 1px solid #e1ddcf;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.88);
+    padding: 10px;
+}
+
+.history-item {
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.history-item:hover {
+    transform: translateY(-1px);
+    border-color: #bbd0c9;
+}
+
+.history-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 3px 9px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge.safe {
+    background: #dbf2df;
+    color: #1f6b38;
+}
+
+.badge.watch {
+    background: #ffe8bf;
+    color: #8f5a0e;
+}
+
+.badge.danger {
+    background: #ffd8d2;
+    color: #972b21;
+}
+
+.history-meta,
+.mini-list,
+.conversation-list,
+.indicator-list {
+    margin: 0;
+    padding-left: 16px;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.mini-list li,
+.conversation-list li,
+.indicator-list li {
+    margin-bottom: 4px;
+}
+
+.capability-item h4,
+.detail-card h4 {
+    margin: 0 0 6px;
+    font-size: 0.87rem;
+}
+
+.capability-summary {
+    margin: 0 0 8px;
+    color: var(--muted);
+    font-size: 0.83rem;
+}
+
+.empty-state {
+    border: 1px dashed #d6cfbe;
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.84rem;
+}
+
+.reveal-up {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: revealUp 0.55s forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.04s;
+}
+
+.delay-2 {
+    animation-delay: 0.08s;
+}
+
+.delay-3 {
+    animation-delay: 0.12s;
+}
+
+.delay-4 {
+    animation-delay: 0.16s;
+}
+
+.delay-5 {
+    animation-delay: 0.2s;
+}
+
+.delay-6 {
+    animation-delay: 0.24s;
+}
+
+@keyframes revealUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1160px) {
+
+    .connection-panel,
+    .presence-panel,
+    .analyze-panel,
+    .history-panel,
+    .capabilities-panel,
+    .detail-panel {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 760px) {
+    body {
+        padding: 10px;
+    }
+
+    .top-rail {
+        padding: 14px;
+        flex-direction: column;
+    }
+
+    .status-cluster {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .connection-panel,
+    .presence-panel,
+    .analyze-panel,
+    .history-panel,
+    .capabilities-panel,
+    .detail-panel {
+        grid-column: span 12;
+    }
+
+    .bottom-rail {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
