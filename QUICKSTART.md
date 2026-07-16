@@ -116,3 +116,5 @@ CI pipeline is available in `.github/workflows/ci.yml` and runs:
 - JS syntax checks for frontend and extension
 - shell script syntax checks
 - Docker Compose config validation
+
+Note: Ensure that your JAVA_HOME points to Java 17 or higher.
